@@ -1,3 +1,6 @@
 .vagrant
+.tox
 cookbooks
 Berksfile.lock
+*.pyc
+*.egg-info
