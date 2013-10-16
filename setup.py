@@ -15,5 +15,5 @@ setup(name='PySimplePluginsDiscovery',
     license='New BSD License',
     author='Michał Bachowski',
     author_email='michal@bachowski.pl',
-    packages=['pyspd'],
-    package_dir={'': 'src'})
+    packages=['pyspd', 'pyspd.locator'],
+    package_dir={'': 'src', 'locator': 'src/locator'})
