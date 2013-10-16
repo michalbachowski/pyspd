@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from pyplugins.locator import LocatorInterface
+from pyspd.locator import LocatorInterface
 
 
 class LocatorAggregate(LocatorInterface):
@@ -13,7 +13,7 @@ class LocatorAggregate(LocatorInterface):
             :param    *args: locators to be aggregated
             :type     *args: callable
         """
-        self.locators = args
+        self.locators = set(args)
 
     def append(self, locator):
         """Append new locator
@@ -23,7 +23,7 @@ class LocatorAggregate(LocatorInterface):
             :type     locator: callable
         :returns: LocatorAggregate
         """
-        self.locators.append(locator)
+        self.locators.add(locator)
         return self
 
     def __call__(self):
