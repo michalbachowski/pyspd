@@ -1,4 +1,5 @@
 .vagrant
+.coverage
 .tox
 cookbooks
 Berksfile.lock
