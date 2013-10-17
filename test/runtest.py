@@ -6,7 +6,7 @@ import sys
 import unittest
 
 TEST_MODULES = ['pyspd_test', 'locator.aggregate_test', 'locator.file_test',
-        'locator.dir_test']
+        'locator.dir_test', 'locator.module_test']
 
 
 def all():
