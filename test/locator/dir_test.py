@@ -22,7 +22,7 @@ class LocatorDirTestCase(unittest.TestCase):
     def get_example_paths(self):
         if not hasattr(self, 'example_paths'):
             tmp = os.path.join(os.path.dirname(os.path.dirname(
-                os.path.abspath(__file__))), 'examples1')
+                os.path.abspath(__file__))), 'examples2')
             self.example_paths = [tmp]
         return self.example_paths
 
