@@ -5,8 +5,6 @@
 # python standard library
 #
 import unittest
-import os
-import sys
 
 ##
 # testutils
