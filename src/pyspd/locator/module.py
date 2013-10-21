@@ -16,11 +16,11 @@ class LocatorModule(LocatorInterface):
             :param     *modules: list of modules to be loaded
             :type      *modules: list
         """
-        self.modules = set(modules)
+        self._modules = set(modules)
 
     def __call__(self):
         """
         Loads plugins from given modules
         """
-        for module in self.modules:
+        for module in self._modules:
             importlib.import_module(module)

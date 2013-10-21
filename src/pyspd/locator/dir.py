@@ -13,10 +13,10 @@ class LocatorDir(LocatorFile):
         """
         Loads a set of plugins at the given path.
         """
-        for path in self.files:
-            self.find_plugins_in_path(path)
+        for path in self._files:
+            self._find_plugins_in_path(path)
 
-    def find_plugins_in_path(self, path):
+    def _find_plugins_in_path(self, path):
         """Looks for plugins in given path
 
 
@@ -27,4 +27,4 @@ class LocatorDir(LocatorFile):
         plugin_dir = os.path.realpath(path)
 
         for filename in os.listdir(plugin_dir):
-            self.load_module_from_file(plugin_dir, filename)
+            self._load_module_from_file(plugin_dir, filename)

@@ -17,19 +17,19 @@ class LocatorFile(LocatorInterface):
             :param     *files: list of files or directories to be examined when looking for plugins
             :type      *files: list
         """
-        self.files = set(files)
-        self.module_name_cache = []
+        self._files = set(files)
+        self._module_name_cache = []
 
     def __call__(self):
         """
         Loads a set of plugins at the given path.
         """
-        for path in self.files:
+        for path in self._files:
             filename = os.path.basename(path)
             dirname = os.path.dirname(path)
-            self.load_module_from_file(dirname, filename)
+            self._load_module_from_file(dirname, filename)
 
-    def load_module_from_file(self, path, filename):
+    def _load_module_from_file(self, path, filename):
         """Loads module from given file and path
 
         Arguments:
@@ -38,13 +38,13 @@ class LocatorFile(LocatorInterface):
             :param    filename: name of file to load
             :type     filename: string
         """
-        name = self.prepare_module_name(path, filename)
-        if not self.valid_module_information(path, name):
+        name = self._prepare_module_name(path, filename)
+        if not self._valid_module_information(path, name):
             return
 
-        self.import_module(path, name)
+        self._import_module(path, name)
 
-    def prepare_module_name(self, plugin_dir, item):
+    def _prepare_module_name(self, plugin_dir, item):
         """
         Prepares name of module to load
 
@@ -64,7 +64,7 @@ class LocatorFile(LocatorInterface):
         if os.path.isdir(os.path.join(plugin_dir, item)):
             return item
 
-    def valid_module_information(self, path, name):
+    def _valid_module_information(self, path, name):
         """Checks if given module name is valid
 
         Arguments:
@@ -75,12 +75,12 @@ class LocatorFile(LocatorInterface):
         if name is None:
             return False
         tmpname = os.path.join(path, name)
-        if tmpname in self.module_name_cache:
+        if tmpname in self._module_name_cache:
             return False
-        self.module_name_cache.append(tmpname)
+        self._module_name_cache.append(tmpname)
         return True
 
-    def import_module(self, path, name):
+    def _import_module(self, path, name):
         """
         Imports module given as path to directory and module name
 
