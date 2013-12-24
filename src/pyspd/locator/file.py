@@ -17,7 +17,7 @@ class LocatorFile(LocatorInterface):
             :param     *files: list of files or directories to be examined when looking for plugins
             :type      *files: list
         """
-        self._files = set(files)
+        self._files = list(files)
         self._module_name_cache = []
 
     def __call__(self):

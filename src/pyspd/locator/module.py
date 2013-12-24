@@ -16,7 +16,7 @@ class LocatorModule(LocatorInterface):
             :param     *modules: list of modules to be loaded
             :type      *modules: list
         """
-        self._modules = set(modules)
+        self._modules = list(modules)
 
     def __call__(self):
         """

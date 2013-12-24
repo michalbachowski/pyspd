@@ -13,7 +13,7 @@ class LocatorAggregate(LocatorInterface):
             :param    *args: locators to be aggregated
             :type     *args: callable
         """
-        self.locators = set(args)
+        self.locators = list(args)
 
     def append(self, locator):
         """Append new locator
@@ -23,7 +23,8 @@ class LocatorAggregate(LocatorInterface):
             :type     locator: callable
         :returns: LocatorAggregate
         """
-        self.locators.add(locator)
+        if locator not in self.locators:
+            self.locators.append(locator)
         return self
 
     def __call__(self):
