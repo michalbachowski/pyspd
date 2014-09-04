@@ -53,12 +53,14 @@ class LocatorDirTestCase(unittest.TestCase):
         self.assertFalse('pl1' in sys.modules.keys())
         self.assertFalse('pl2' in sys.modules.keys())
         self.assertFalse('pl3' in sys.modules.keys())
+        self.assertFalse('not_loaded_2' in sys.modules.keys())
 
         self.lf()
 
         self.assertTrue('pl1' in sys.modules.keys())
         self.assertTrue('pl2' in sys.modules.keys())
         self.assertTrue('pl3' in sys.modules.keys())
+        self.assertFalse('not_loaded_2' in sys.modules.keys())
 
 
 if "__main__" == __name__:
