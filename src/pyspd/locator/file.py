@@ -57,6 +57,8 @@ class LocatorFile(LocatorInterface):
         """
         if '__pycache__' == item:
             return
+        if item.startswith('__init__.py'):
+            return os.path.basename(plugin_dir)
         if item.endswith(".py"):
             return item[:-3]
         if item.endswith(".pyc"):
