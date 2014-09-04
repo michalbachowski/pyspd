@@ -4,6 +4,8 @@
 from __future__ import absolute_import
 import sys
 import unittest
+import logging
+logging.basicConfig(level='DEBUG')
 
 TEST_MODULES = ['pyspd_test', 'locator.aggregate_test', 'locator.file_test',
         'locator.dir_test', 'locator.module_test', 'locator.recursive_dir_test']
