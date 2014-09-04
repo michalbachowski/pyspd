@@ -3,7 +3,12 @@
 import importlib
 import os
 import sys
+from logging import getLogger
+
 from pyspd.locator import LocatorInterface
+
+
+log = getLogger(__name__)
 
 
 class LocatorFile(LocatorInterface):
@@ -96,4 +101,6 @@ class LocatorFile(LocatorInterface):
         """
         if path not in sys.path:
             sys.path.insert(0, path)
+        log.debug('loading module; module=%s; sys.path=%s', name, \
+                  ' '.join(sys.path))
         importlib.import_module(name)
