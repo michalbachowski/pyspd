@@ -38,7 +38,7 @@ class LocatorFile(LocatorInterface):
             :param    filename: name of file to load
             :type     filename: string
         """
-        name = self._prepare_module_name(path, filename)
+        (path, name) = self._prepare_module_name(path, filename)
         if not self._valid_module_information(path, name):
             return
 
@@ -56,15 +56,16 @@ class LocatorFile(LocatorInterface):
         :returns: string -- name of module to load
         """
         if '__pycache__' == item:
-            return
+            return (None, None)
         if item.startswith('__init__.py'):
-            return os.path.basename(plugin_dir)
+            return (os.path.dirname(plugin_dir), os.path.basename(plugin_dir))
         if item.endswith(".py"):
-            return item[:-3]
+            return (plugin_dir, item[:-3])
         if item.endswith(".pyc"):
-            return item[:-4]
+            return (plugin_dir, item[:-4])
         if os.path.isdir(os.path.join(plugin_dir, item)):
-            return item
+            return (plugin_dir, item)
+        return (None, None)
 
     def _valid_module_information(self, path, name):
         """Checks if given module name is valid
