@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from itertools import takewhile, ifilter, ifilterfalse, imap
+from itertools import takewhile
 from logging import getLogger
+
+from six.moves import map, filterfalse, filter
+
 from pyspd.locator.file import LocatorFile
 
 
@@ -43,8 +46,8 @@ class LocatorRecursiveDir(LocatorFile):
 
     def skip(self, *files):
         test = lambda f: f.startswith('*')
-        self._skip_names.extend(ifilterfalse(test, files))
-        self._skip_ext.extend(imap(lambda f: f[1:], ifilter(test, files)))
+        self._skip_names.extend(filterfalse(test, files))
+        self._skip_ext.extend(map(lambda f: f[1:], filter(test, files)))
         return self
 
     def _should_skip_file(self, filename):

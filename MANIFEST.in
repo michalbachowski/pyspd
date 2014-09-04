@@ -1,2 +1,2 @@
-include README.md LICENSE setup.py dev_requirements.txt
+include README.md LICENSE setup.py requirements.txt dev_requirements.txt
 recursive-include src *.py
