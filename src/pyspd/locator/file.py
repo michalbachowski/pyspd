@@ -67,7 +67,7 @@ class LocatorFile(LocatorInterface):
         if item.endswith(".py"):
             return (plugin_dir, item[:-3])
         if item.endswith(".pyc"):
-            return (plugin_dir, item[:-4])
+            return (None, None)
         if os.path.isdir(os.path.join(plugin_dir, item)):
             return (plugin_dir, item)
         return (None, None)
