@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from warnings import warn
 from pyspd.locator import LocatorInterface
 
 
@@ -13,6 +14,8 @@ class LocatorAggregate(LocatorInterface):
             :param    *args: locators to be aggregated
             :type     *args: callable
         """
+        warn("pyspd.locator.aggregate.LocatorAggregate is deprecated." +
+             "Use pyspd.loader.LoaderAggregate instead")
         self.locators = list(args)
 
     def append(self, locator):
@@ -31,5 +34,7 @@ class LocatorAggregate(LocatorInterface):
         """
         Locates plugins using given locators
         """
+        warn("pyspd.locator.aggregate.LocatorAggregate is deprecated." +
+             "Use pyspd.loader.LoaderAggregate instead")
         for locate in self.locators:
             locate()

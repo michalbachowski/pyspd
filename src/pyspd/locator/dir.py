@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+from warnings import warn
 from pyspd.locator.file import LocatorFile
 
 
@@ -13,6 +14,8 @@ class LocatorDir(LocatorFile):
         """
         Loads a set of plugins at the given path.
         """
+        warn("pyspd.locator.dir.LocatorDir is deprecated." +
+             "Use pyspd.loader.LoaderDir instead")
         for path in self._files:
             self._find_plugins_in_path(path)
 

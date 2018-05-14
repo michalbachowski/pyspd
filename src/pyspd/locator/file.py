@@ -4,6 +4,7 @@ import importlib
 import os
 import sys
 from logging import getLogger
+from warnings import warn
 
 from pyspd.locator import LocatorInterface
 
@@ -22,6 +23,8 @@ class LocatorFile(LocatorInterface):
             :param     *files: list of files or directories to be examined when looking for plugins
             :type      *files: list
         """
+        warn("pyspd.locator.file.LocatorFile is deprecated." +
+             "Use pyspd.loader.LoaderFile instead")
         self._files = list(files)
         self._module_name_cache = []
 
@@ -29,6 +32,8 @@ class LocatorFile(LocatorInterface):
         """
         Loads a set of plugins at the given path.
         """
+        warn("pyspd.locator.file.LocatorFile is deprecated." +
+             "Use pyspd.loader.LoaderFile instead")
         for path in self._files:
             filename = os.path.basename(path)
             dirname = os.path.dirname(path)

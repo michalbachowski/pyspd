@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 from logging import getLogger
+from warnings import warn
 
 
 from pyspd.locator.file import LocatorFile
@@ -18,6 +19,8 @@ class LocatorRecursiveDir(LocatorFile):
         """
         Loads a set of plugins at the given path.
         """
+        warn("pyspd.locator.recursive_dir.LocatorRecursiveDir is deprecated." +
+             "Use pyspd.loader.LoaderRecursiveDir instead")
         logger.debug('loading plugins from paths: %s', ' '.join(self._files))
 
         for path in self._files:

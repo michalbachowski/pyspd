@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import importlib
+from warnings import warn
 from pyspd.locator import LocatorInterface
 
 
@@ -16,11 +17,15 @@ class LocatorModule(LocatorInterface):
             :param     *modules: list of modules to be loaded
             :type      *modules: list
         """
+        warn("pyspd.locator.module.LocatorModule is deprecated." +
+             "Use pyspd.loader.LoaderModule instead")
         self._modules = list(modules)
 
     def __call__(self):
         """
         Loads plugins from given modules
         """
+        warn("pyspd.locator.module.LocatorModule is deprecated." +
+             "Use pyspd.loader.LoaderModule instead")
         for module in self._modules:
             importlib.import_module(module)
